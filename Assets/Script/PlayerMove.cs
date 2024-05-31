@@ -35,5 +35,7 @@ public class PlayerMove : MonoBehaviour
     void OnMove(InputValue value)
     {
         inputValue = value.Get<Vector2>().x;
+
+        body.gravityScale = Mathf.Abs(inputValue) * 3;
     }
 }
