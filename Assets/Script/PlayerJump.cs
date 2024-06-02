@@ -21,7 +21,13 @@ public class PlayerJump : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Ground"))
             return;
-        isGround = true;
+
+        // y축속도가 0있을때(점프중일때)
+        if (body.velocityY > 0.5f)
+            return;
+
+        // 충돌의 y축 노말벡터가 0보다 클때
+        isGround = collision.contacts[0].normal.y > 0;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
